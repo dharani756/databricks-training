@@ -23,4 +23,10 @@ CREATE TABLE Department(
   (2,'HR'),
   (3,'Finance'),
   (4,'Marketing');
-  
+  INSERT INTO Project(project_id, name, department_id)
+VALUES
+(1, 'Project Alpha', 1),
+(2, 'Project Beta', 2),
+(3, 'Project Gamma', 3),
+(4, 'Project Delta', 4),
+(5, 'Project Epsilon', 4);

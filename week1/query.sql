@@ -102,10 +102,54 @@ SELECT YEAR(hire_date),COUNT(emp_id)
 FROM Employee
 GROUP BY YEAR(hire_date)
 HAVING COUNT(emp_id)>1;
-
-
-
-
-
-
-
+SELECT d.name,COUNT(e.salary)
+FROM Employee e
+JOIN Department d
+ON e.department_id=d.department_id
+GROUP BY d.name
+HAVING COUNT(e.salary)<1000;
+SELECT d.name,MAX(e.salary)
+FROM Employee e
+JOIN Department d
+ON e.department_id=d.department_id
+GROUP BY d.name
+HAVING MAX(e.salary)>75000;
+SELECT *
+FROM Employee
+ORDER BY salary ASC;
+SELECT *
+FROM Employee
+ORDER BY age DESC;
+SELECT *
+FROM Employee
+ORDER BY hire_date ASC;
+SELECT *
+FROM Employee
+ORDER BY department_id,salary;
+SELECT d.name,SUM(e.salary)
+FROM Employee e
+JOIN Department d
+ON e.department_id=d.department_id
+GROUP BY d.name
+ORDER BY SUM(e.salary);
+SELECT e.name,d.name
+FROM Employee e
+JOIN Department d
+ON e.department_id=d.department_id;
+SELECT p.name,d.name
+FROM Project p
+JOIN Department d
+ON p.department_id=d.department_id;
+SELECT e.name,p.name
+FROM Employee e
+JOIN Project p
+ON e.department_id=p.department_id;
+SELECT e.name,d.name
+FROM Employee e
+LEFT JOIN Department d
+ON e.department_id = d.department_id;
+SELECT e.name
+FROM Employee e
+LEFT JOIN Project p
+ON e.department_id=p.department_id
+WHERE p.project_id IS Null;

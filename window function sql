@@ -1,0 +1,44 @@
+SELECT employee_name,
+       salary,
+       ROW_NUMBER() OVER(ORDER BY salary DESC) AS row_num
+FROM employees;
+SELECT employee_name,
+       salary,
+       ROW_NUMBER() OVER(ORDER BY salary DESC) AS row_num
+FROM employees;
+SELECT employee_name,
+       salary,
+       ROW_NUMBER() OVER(ORDER BY salary DESC) AS row_num
+FROM employees;
+SELECT employee_name,
+       salary,
+       RANK() OVER(ORDER BY salary DESC) AS salary_rank
+FROM employees;
+SELECT employee_name,
+       department,
+       salary,
+       AVG(salary) OVER(PARTITION BY department) AS dept_avg
+FROM employees;
+WITH ranked_employees AS (
+    SELECT employee_name,
+           salary,
+           RANK() OVER(ORDER BY salary DESC) AS salary_rank
+    FROM employees
+)
+SELECT *
+FROM ranked_employees
+WHERE salary_rank <= 3;
+SELECT employee_name,
+       department,
+       salary,
+       MAX(salary) OVER(
+           PARTITION BY department
+       ) AS highest_salary
+FROM employees;
+SELECT order_id,
+order_id,
+total_amount,
+SUM(total_amount)OVER(
+  ORDER BY order_date
+  )AS running_total
+ FROM orders;

@@ -1,1 +1,23 @@
 
+SELECT
+    s.student_name,
+    c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.instructor_id;
+SELECT 
+   course_id,
+   course_name
+FROM courses 
+WHERE instructor_id IS NULL;
+SELECT
+    s.student_name AS instructor,
+    c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.instructor_id;
+SELECT
+    course_id,
+    course_name
+FROM courses
+WHERE instructor_id IS NULL;

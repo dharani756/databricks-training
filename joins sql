@@ -1,4 +1,3 @@
-
 SELECT
     s.student_name,
     c.course_name
@@ -21,3 +20,51 @@ SELECT
     course_name
 FROM courses
 WHERE instructor_id IS NULL;
+SELECT s.student_name,
+       c.course_name,
+       c.instructor_id
+ FROM students s
+ RIGHT JOIN courses c
+ ON s.student_id=c.instructor_id;
+ SELECT s.student_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.instructor_id
+WHERE c.course_id IS NULL;
+SELECT s.student_name,
+       c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.instructor_id
+
+UNION
+
+SELECT s.student_name,
+       c.course_name
+FROM students s
+RIGHT JOIN courses c
+ON s.student_id = c.instructor_id;
+SELECT course_name
+FROM courses
+WHERE instructor_id IS NULL;
+SELECT s.student_name AS instructor,
+       c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.instructor_id
+
+UNION
+
+SELECT s.student_name AS instructor,
+       c.course_name
+FROM students s
+RIGHT JOIN courses c
+ON s.student_id = c.instructor_id;
+SELECT s.student_name,
+       c.course_name,
+       i.student_name AS instructor_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.instructor_id
+LEFT JOIN students i
+ON c.instructor_id = i.student_id;

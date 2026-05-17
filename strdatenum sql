@@ -46,4 +46,46 @@ SELECT order_id,
  TRUNCATE(order_amount,1)AS TRUNCATED_AMOUNT
  FROM orders_delivery;
  
+ SELECT order_id,
+       order_date,
+       delivery_date,
+CASE
+ WHEN order_date=delivery_Date THEN 'Same-day'
+ ELSE 'Not Same-day'
+END AS delivery
+FROM orders_delivery;
+
+SELECT order_id,
+       order_date,
+       delivery_date,
+       CASE
+           WHEN delivery_date > DATE_ADD(order_date, INTERVAL 3 DAY)
+           THEN 'Delayed by 3+ days'
+           ELSE 'On Time'
+       END AS delivery_status
+FROM orders_delivery;
+
+SELECT CONCAT(
+ UPPER(LEFT(cust_name,1)),
+LOWER(SUBSTRING(cust_name,2))
+  )AS formatted_name
+ FROM customer_spending;
  
+
+SELECT   MONTHNAME(purchase_date)
+FROM customer_spending;
+
+SELECT ROUND(purchase_amount,2)
+FROM customer_spending;
+
+SELECT purchase_amount,
+       ABS(purchase_amount) 
+FROM customer_spending;
+
+SELECT purchase_amount,
+       CASE
+           WHEN purchase_amount > 15000 THEN 'High spender'
+           WHEN purchase_amount > 8000 AND purchase_amount < 15000 THEN 'Medium'
+           ELSE 'Low'
+       END AS purchase_category
+FROM customer_spending;

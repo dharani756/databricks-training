@@ -48,3 +48,30 @@ INSERT INTO orders_delivery VALUES
 
 (104,'pooja','2025-01-18',NULL,9200.10);
 
+CREATE TABLE customer_spending (
+
+cust_id INT,
+
+cust_name VARCHAR(50),
+
+city VARCHAR(30),
+
+purchase_amount DECIMAL(10,2),
+
+purchase_date DATE
+
+);
+
+INSERT INTO customer_spending VALUES
+
+(1,'amit','mumbai',12000.75,'2024-12-01'),
+
+(2,'neha','delhi',8500.40,'2024-12-15'),
+
+(3,'rohit','mumbai',15500.90,'2024-11-20'),
+
+(4,'kavya','chennai',6000.10,'2024-10-05');
+
+
+
+
